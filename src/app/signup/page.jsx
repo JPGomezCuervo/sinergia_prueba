@@ -1,9 +1,9 @@
 import { HeartHandshake } from "lucide-react"
-import { LoginForm } from "@/components/login-form"
-import { login } from "@/lib/actions.js"
+import { SignUpForm } from "@/components/signup-form"
+import { signup } from "@/lib/actions.js"
 
 
-export default function LoginPage() {
+export default function SignUpPage() {
 
   return (
     <div className="grid min-h-svh">
@@ -19,7 +19,7 @@ export default function LoginPage() {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm action={login} method={"POST"}/>
+            <SignUpForm action={signup} method={"POST"}/>
           </div>
         </div>
       </div>

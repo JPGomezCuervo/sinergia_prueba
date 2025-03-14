@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
 
-export function LoginForm({
+export function SignUpForm({
   className,
   ...props
 }) {
@@ -17,13 +17,30 @@ export function LoginForm({
   };
 
   const [state, formAction, pending] = useActionState(async (prevState, formData) => {
-    return await props.action(formData);
+    const pass = formData.get("password");
+    const checkpassword = formData.get("checkpassword");
+    const name = formData.get("name");
+    const email = formData.get("email");
+
+    if (pass === checkpassword) {
+      formData.delete("checkpassword");
+      return await props.action(formData);
+    } else {
+      console.log(pass, checkpassword);
+      return { message: "Las contraseñas no coinciden" };
+    }
   }, initialState);
 
   return (
     <form className={cn("flex flex-col gap-6", className)} action={formAction}>
-      <h1 className="text-2xl font-bold text-center">¡Bienvenido de nuevo!</h1>
+      <h1 className="text-2xl font-bold text-center">¡Regístrate en Sinergia Creativa!</h1>
       <div className="grid gap-6">
+
+        <div className="grid gap-3">
+          <Label htmlFor="name">Nombre completo</Label>
+          <Input id="name" type="name" name="name" placeholder="Pepito Pérez" required />
+        </div>
+
         <div className="grid gap-3">
           <Label htmlFor="email">Correo electrónico</Label>
           <Input id="email" type="email" name="email" placeholder="m@example.com" required />
@@ -31,20 +48,15 @@ export function LoginForm({
         <div className="grid gap-3">
           <Label htmlFor="password">Contraseña</Label>
           <Input id="password" type="password" name="password" required />
-          <a href="#" className="ml-auto text-sm underline-offset-4 hover:underline">
-            ¿Olvidaste tu contraseña?
-          </a>
+        </div>
+        <div className="grid gap-3">
+          <Label htmlFor="checkpassword">Ingresa de nuevo tu contraseña</Label>
+          <Input id="checkpassword" type="password" name="checkpassword" required />
         </div>
         <p aria-live="polite" className="text-red-500 text-base font-bold text-center">{state?.message}</p>
         <Button type="submit" className="w-full" disabled={pending}>
-          Ingresa
-        </Button>
-      </div>
-      <div className="text-center text-sm">
-        ¿No estás registrado?{" "}
-        <Link href="/signup" className="underline underline-offset-4">
           Regístrate
-        </Link>
+        </Button>
       </div>
     </form>
   );

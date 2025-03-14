@@ -1,3 +1,5 @@
-export default function Dashboard() {
-        return <p> Dashboard page </p>
+export default function DashboardPage() {
+        return (
+        <p>Esta es la page</p>
+        );
 }
