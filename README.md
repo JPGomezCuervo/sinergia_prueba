@@ -62,6 +62,7 @@ La aplicación tiene dos vistas principales:
 ### Para que puedas comenzar a probar sin perder tiempo creando cuentas, ya viene un usuario preconfigurado: ###
 
 **URL:** https://sinergia-prueba.vercel.app/login
+
 **Email:** admin@admin.com
 
 **Contraseña:** en el correo electrónico que te envié está :) 
