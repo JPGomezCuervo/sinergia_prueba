@@ -1,6 +1,6 @@
-import { HeartHandshake } from "lucide-react"
-import { SignUpForm } from "@/components/signup-form"
-import { signup } from "@/lib/actions.js"
+import { HeartHandshake } from "lucide-react";
+import { SignUpForm } from "@/components/signup-form";
+import { signup } from "@/lib/actions.js";
 
 
 export default function SignUpPage() {

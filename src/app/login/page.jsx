@@ -1,6 +1,6 @@
-import { HeartHandshake } from "lucide-react"
-import { LoginForm } from "@/components/login-form"
-import { login } from "@/lib/actions.js"
+import { HeartHandshake } from "lucide-react";
+import { LoginForm } from "@/components/login-form";
+import { login } from "@/lib/actions.js";
 
 
 export default function LoginPage() {

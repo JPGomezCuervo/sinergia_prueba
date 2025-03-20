@@ -1,10 +1,14 @@
-import * as React from "react"
-import { GalleryVerticalEnd } from "lucide-react"
+import * as React from "react";
+import Link from "next/link";
+import { GalleryVerticalEnd, LogOut } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { logout } from "@/lib/actions.js";
 
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
+  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -12,166 +16,87 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-// This is sample data.
 const data = {
   navMain: [
     {
-      title: "Getting Started",
-      url: "#",
+      title: "Metas",
+      url: "/dashboard",
       items: [
         {
-          title: "Installation",
-          url: "#",
+          title: "Mis metas",
+          url: "/dashboard",
         },
         {
-          title: "Project Structure",
-          url: "#",
+          title: "Crear nueva meta",
+          url: "/dashboard/crear/metas",
         },
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Empresas",
       url: "#",
       items: [
         {
-          title: "Routing",
-          url: "#",
+          title: "Mis empresas",
+          url: "/dashboard/empresas",
         },
         {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
+          title: "Crear nueva empresa",
+          url: "/dashboard/crear/empresas",
         },
       ],
     },
     {
-      title: "API Reference",
+      title: "Socios",
       url: "#",
       items: [
         {
-          title: "Components",
-          url: "#",
+          title: "Mis socios",
+          url: "/dashboard/socios",
         },
         {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
+          title: "Crear nuevo socio",
+          url: "/dashboard/crear/socios",
         },
       ],
     },
     {
-      title: "Architecture",
+      title: "Productos",
       url: "#",
       items: [
         {
-          title: "Accessibility",
-          url: "#",
+          title: "Mis Productos",
+          url: "/dashboard/productos",
         },
         {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
+          title: "Crear nuevo producto",
+          url: "/dashboard/crear/productos",
         },
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({
   ...props
 }) {
+  const pathname = usePathname();
   return (
     <Sidebar variant="floating" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <a href="/dashboard">
                 <div
                   className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <GalleryVerticalEnd className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Documentation</span>
-                  <span className="">v1.0.0</span>
+                  <span className="font-medium">Sinergia Creativa</span>
+                  <span className="">v0.2</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -184,16 +109,16 @@ export function AppSidebar({
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url} className="font-medium">
+                  <Link href={item.url} className="font-medium">
                     {item.title}
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
                 {item.items?.length ? (
                   <SidebarMenuSub className="ml-0 border-l-0 px-1.5">
                     {item.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
+                        <SidebarMenuSubButton asChild isActive={pathname == item.url}>
+                          <Link  href={item.url}>{item.title}</Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
@@ -204,6 +129,12 @@ export function AppSidebar({
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenuButton className="cursor-pointer" onClick={ logout }>
+          <LogOut />
+          <span>Cerrar Sesión</span>
+        </SidebarMenuButton>
+      </SidebarFooter>
     </Sidebar>
   );
 }

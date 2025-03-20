@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## SINERGIA CREATIVA PRUEBA TECNICA
+Este proyecto es una aplicación web mobile first con funcionalidades básicas de autenticación, gestión de empresas, productos, socios y **simulaciones o planeaciones mensuales**. Está pensado como una prueba técnica y busca ser fácil de ejecutar y probar. Está desarrollada con NextJS, Tailwind, ShadCN y SQLite.
 
-## Getting Started
+## ¿Cómo ejecuta el proyecto?
 
-First, run the development server:
+### 🐧 Para sistemas Unix-like (Linux / macOS)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/JPGomezCuervo/sinergia_prueba
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Entra al directorio del proyecto
+   ```bash
+   cd ./conteo-prueba
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. Instala las dependencias y arranca el servidor de desarrollo
+   ```bash
+   cd npm install && npm run build && npm run start
+   
+4. Abre tu navegador en http://localhost:3000 (o la URL que te muestre la terminal)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🪟 ¿Y en Windows?
 
-## Learn More
+Si estás en Windows y no usas WSL (Windows Subsystem for Linux), igual pueded ejecutar el proyecto:
 
-To learn more about Next.js, take a look at the following resources:
+1. Instala Node.js desde su sitio oficial: https://nodejs.org/
+2. Usa Git Bash o PowerShell para los comandos.
+3. Luego, sigue los mismos pasos que para Unix: clonar, instalar dependencias y correr `npm run dev`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+⚠️ Recomendación: usar WSL es más cómodo si estás haciendo proyectos web con herramientas pensadas para Unix.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Funcionalidades principales
 
-## Deploy on Vercel
+La aplicación tiene dos vistas principales:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Login:** Para autenticarse en el sistema.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Dashboard:** Desde aquí puedes: Crear empresas. Crear productos asociados a las empresas. Crear Miembros. Crear planeaciones mensuales. Eliminar empresas. Eliminar productos. Eliminar miembros. Eliminar planeaciones mensuales Todo desde una interfaz sencilla y directa.
+
+## Usuario de prueba
+### Para que puedas comenzar a probar sin perder tiempo creando cuentas, ya viene un usuario preconfigurado: ###
+
+**Email:** admin@admin.com
+
+**Contraseña:** en el correo electrónico que te envié está :) 
+
+De todas formas, si lo deseas, puedes crear tu propio usuario desde la pantalla de login.
+
+## Datos precargados 
+El sistema ya incluye algunas empresas **si inicias sesión con los usuario suministrados** y productos de ejemplo, así que puedes comenzar a probar funcionalidades desde el primer minuto. Pero si quieres, puedes eliminarlos, modificarlos o agregar nuevos sin problema.
