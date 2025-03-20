@@ -19,6 +19,13 @@ Este proyecto es una aplicación web mobile first con funcionalidades básicas d
    
 4. Abre tu navegador en http://localhost:3000 (o la URL que te muestre la terminal)
 
+5. Para cargar las comisiones y los factores que las multiplican debes:
+   ```bash
+   sqlite3 <nombreDeTuBaseDeDatos>.sqlite < ./utils.sql
+
+6. Perfecto, disfruta!
+
+
 ### 🪟 ¿Y en Windows?
 
 Si estás en Windows y no usas WSL (Windows Subsystem for Linux), igual pueded ejecutar el proyecto:
@@ -28,6 +35,20 @@ Si estás en Windows y no usas WSL (Windows Subsystem for Linux), igual pueded e
 3. Luego, sigue los mismos pasos que para Unix: clonar, instalar dependencias y correr `npm run dev`.
 
 ⚠️ Recomendación: usar WSL es más cómodo si estás haciendo proyectos web con herramientas pensadas para Unix.
+
+### Para configurar la base de datos...
+
+Si consideras que es muy difícil configurar la base de datos no te preocupes da click [aquí](#usuario-de-prueba).
+
+Debes tener SQLite3 y debes remplazar la ruta de la base de datos en el archivo **./src/lib/db.js.** Ejemplo: 
+
+```
+/* elimina la linea authToken y sólo deja el campo "url" */
+export const turso = createClient({
+    url: file:/home/juan/sinergia/<nombreDeTuBaseDeDatos>.sqlite,
+    authToken: process.env.TURSO_AUTH_TOKEN,
+});
+```
 
 ## Funcionalidades principales
 
@@ -40,6 +61,7 @@ La aplicación tiene dos vistas principales:
 ## Usuario de prueba
 ### Para que puedas comenzar a probar sin perder tiempo creando cuentas, ya viene un usuario preconfigurado: ###
 
+**URL:** https://sinergia-prueba.vercel.app/login
 **Email:** admin@admin.com
 
 **Contraseña:** en el correo electrónico que te envié está :) 
