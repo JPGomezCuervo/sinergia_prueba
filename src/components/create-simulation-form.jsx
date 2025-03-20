@@ -34,8 +34,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// TODO: Add Key
-// Crear tarjeta que contiene el resultado de: (product_value*(vat+1))*commision_value
 export function CreateForm({
   userID,
   commissions,

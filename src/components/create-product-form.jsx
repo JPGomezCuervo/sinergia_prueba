@@ -41,7 +41,6 @@ export function CreateForm({
   const [quantity, setQuantity] = useState("");
   const [description, setDescription] = useState("");
 
-  // TODO: Create Action
   const [state, formAction, pending] = useActionState(async (prevState, formData) => {
     let formClosingRate = formData.get("product_closing_rate");
     if(formClosingRate) {

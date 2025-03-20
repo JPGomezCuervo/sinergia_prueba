@@ -32,9 +32,11 @@ import {
 import { ErrorCodes, SQLErrorCodes } from "@/lib/errors";
 import { makeResponse, Logger } from "@/lib/utils";
 
-/* TODO: CHECK NANS */
-/* TODO: remove dev secret */
-const JWT_SECRET = /* process.env.JWT_SECRET || */ "dev_secret";
+const JWT_SECRET =  process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error("Missing JWT_SECRET .env");
+}
+
 const makeError = (errorCode) => makeResponse(false, errorCode);
 const makePayload = (payload) => makeResponse(true, ErrorCodes.NO_ERROR, payload);
 const serverLog = new Logger("server");
@@ -228,7 +230,6 @@ export async function deleteCompany(company_id) {
 
   company_id = parseInt(company_id);
 
-  /* TODO CHECK the double deletion*/
   try {
     await db_getCompanyByID(company_id);
     await db_deleteCompany(company_id);
@@ -348,8 +349,6 @@ export async function editProduct(formData) {
   let company_id = formData.get("company_id");
   let product_id = formData.get("product_id");
   let product_price = formData.get("product_price");
-
-  /* TODO: check conditions */
 
   /* The following two are optional */
   let product_description = formData.get("product_description")?.trim();
@@ -508,7 +507,6 @@ export async function deleteMember(member_id) {
 
   member_id = parseInt(member_id);
 
-  /* TODO CHECK the double deletion*/
   try {
     await db_getMemberByID(member_id);
     await db_deleteMember(member_id);
@@ -656,7 +654,6 @@ export async function getVAT() {
   return makePayload(0.21);
 }
 
-/* TODO: Check what happen the session is expired */
 export async function getCurrentUserID() {
   const cookieStore = await cookies();
   const token = cookieStore.get("session_token")?.value;

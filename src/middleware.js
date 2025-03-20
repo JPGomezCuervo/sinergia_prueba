@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
-const JWT_SECRET = /* process.env.JWT_SECRET || */ "dev_secret";
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error("Missing JWT_SECRET .env");
+}
 const secret = new TextEncoder().encode(JWT_SECRET);
 
 export async function middleware(request) {
