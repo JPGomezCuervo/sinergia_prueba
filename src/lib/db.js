@@ -3,10 +3,8 @@ import { Logger, capitalize } from "@/lib/utils";
 import { createClient } from "@libsql/client";
 
 export const turso = createClient({
-
-  url: "file:/home/juan/Projects/sinergia_prueba/tursotest.sqlite",
-  //url: process.env.TURSO_DATABASE_URL,
-  //authToken: process.env.TURSO_AUTH_TOKEN,
+  url: process.env.TURSO_DATABASE_URL,
+  authToken: process.env.TURSO_AUTH_TOKEN,
 });
 
 const dbLogger = new Logger("db");
